@@ -16,12 +16,14 @@ const router = createBrowserRouter([
         path: "/calculator",
         element: <Calculator />
     }
-]);
+], {
+    basename: process.env.PUBLIC_URL
+});
 
 function App() {
   return (
       <>
-          <RouterProvider router={router} />
+          <RouterProvider router={router}/>
       </>
 
   );
