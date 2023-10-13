@@ -1,10 +1,14 @@
 {
   "files": {
-    "main.css": "/dream-wave-front/static/css/main.4ba0ff13.css",
-    "main.js": "/dream-wave-front/static/js/main.6bad7f77.js",
+    "main.css": "/dream-wave-front/static/css/main.0167ee3c.css",
+    "main.js": "/dream-wave-front/static/js/main.0e7460e2.js",
     "static/js/787.8d44e155.chunk.js": "/dream-wave-front/static/js/787.8d44e155.chunk.js",
     "static/media/NEXONLv1GothicLight.ttf": "/dream-wave-front/static/media/NEXONLv1GothicLight.dec3dafab35db5f98ed7.ttf",
     "static/media/NEXONLv1GothicRegular.ttf": "/dream-wave-front/static/media/NEXONLv1GothicRegular.3367236d2b79a849d19b.ttf",
+    "static/media/NEXONLv1GothicBold.ttf": "/dream-wave-front/static/media/NEXONLv1GothicBold.c37a61d35e694ac3c88e.ttf",
+    "static/media/NEXONLv1GothicBold.woff": "/dream-wave-front/static/media/NEXONLv1GothicBold.c7e7a212bbb343a353d4.woff",
+    "static/media/NEXONLv1GothicRegular.woff": "/dream-wave-front/static/media/NEXONLv1GothicRegular.62d909227f8a58443c0d.woff",
+    "static/media/NEXONLv1GothicLight.woff": "/dream-wave-front/static/media/NEXONLv1GothicLight.3c20ba05ac2cc75fe41d.woff",
     "static/media/bg_gradient.png": "/dream-wave-front/static/media/bg_gradient.c98ef645b8929f31f8d6.png",
     "static/media/symbol_shadow.png": "/dream-wave-front/static/media/symbol_shadow.62cad5593e690727f011.png",
     "static/media/symbol.png": "/dream-wave-front/static/media/symbol.1c0812f82baadc076cbf.png",
@@ -12,12 +16,12 @@
     "static/media/text_logo.png": "/dream-wave-front/static/media/text_logo.811a3eb99ac5b19aa4c3.png",
     "index.html": "/dream-wave-front/index.html",
     "static/media/select_arrow.svg": "/dream-wave-front/static/media/select_arrow.b54bf136cfc85b9393a1.svg",
-    "main.4ba0ff13.css.map": "/dream-wave-front/static/css/main.4ba0ff13.css.map",
-    "main.6bad7f77.js.map": "/dream-wave-front/static/js/main.6bad7f77.js.map",
+    "main.0167ee3c.css.map": "/dream-wave-front/static/css/main.0167ee3c.css.map",
+    "main.0e7460e2.js.map": "/dream-wave-front/static/js/main.0e7460e2.js.map",
     "787.8d44e155.chunk.js.map": "/dream-wave-front/static/js/787.8d44e155.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4ba0ff13.css",
-    "static/js/main.6bad7f77.js"
+    "static/css/main.0167ee3c.css",
+    "static/js/main.0e7460e2.js"
   ]
 }
