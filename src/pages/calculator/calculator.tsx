@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from './calculator.module.scss'
 import { useForm, SubmitHandler } from "react-hook-form"
+import { motion } from "framer-motion";
 
 type Inputs = {
     slot: string;
@@ -43,72 +44,90 @@ const Calculator = () => {
     }
 
 
+    function setScreenSize() {
+        let vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty("--vh", `${vh}px`); //"--vh"라는 속성으로 정의해준다.
+    }
+
+    useEffect(() => {
+        setScreenSize();
+    }, []);
+
+    window.addEventListener('resize', () => setScreenSize());
+
     return (
-        <main className={`bg-gradient`}>
-            <div className={'section-wrap'}>
-                <section className={styles.calcSection}>
-                    <h1 className={`title-h1 ${styles.title}`}>수면 리듬 계산기</h1>
-                    <form className={styles.calcBox} onSubmit={handleSubmit(onSubmit)}>
-                        <div className={styles.tabWrap}>
-                            {
-                                tabButton.map((item, index) => (
-                                    <button
-                                        key={index}
-                                        type="button"
-                                        className={`${tabIndex === index && styles.active}`}
-                                        onClick={() =>  setTabIndex(index)}
-                                    >
-                                        {item}
-                                    </button>
-                                ))
-                            }
-                        </div>
-                        <div className={styles.slotWrap}>
-                            <ul className={`${styles.toggle} ${styles[selectSlot]}`}>
-                                <li>
-                                    <input
-                                        {...register("slot")}
-                                        type="radio"
-                                        name="slot"
-                                        id="slot-am"
-                                        value="am"
-                                        onChange={() => setSelectSlot('am')}
-                                    />
-                                    <label htmlFor="slot-am">오전</label>
-                                </li>
-                                <li>
-                                    <input
-                                        {...register("slot")}
-                                        type="radio"
-                                        name="slot"
-                                        id="slot-pm"
-                                        value="pm"
-                                        onChange={() => setSelectSlot('pm')}
-                                    />
-                                    <label htmlFor="slot-pm">오후</label>
-                                </li>
-                            </ul>
-                            <div className={styles.timeSelectBox}>
-                                <button type="button">
-                                    <span>{selectHour}시</span>
-                                </button>
-                                <button type="button">
-                                    <span>{selectMinute}분</span>
-                                </button>
+        <motion.div
+            initial={{opacity: 0}}
+            animate={{opacity: 1}}
+            exit={{opacity: 0}}
+        >
+            <main className={`bg-gradient`}>
+                <div className={'section-wrap'}>
+                    <section className={styles.calcSection}>
+                        <h1 className={`title-h1 ${styles.title}`}>수면 리듬 계산기</h1>
+                        <form className={styles.calcBox} onSubmit={handleSubmit(onSubmit)}>
+                            <div className={styles.tabWrap}>
+                                {
+                                    tabButton.map((item, index) => (
+                                        <button
+                                            key={index}
+                                            type="button"
+                                            className={`${tabIndex === index && styles.active}`}
+                                            onClick={() =>  setTabIndex(index)}
+                                        >
+                                            {item}
+                                        </button>
+                                    ))
+                                }
                             </div>
-                        </div>
-                        <div className={styles.buttonWrap}>
-                            {
-                                !!tabIndex &&
-                                <button
-                                    type="button" className={`btn-line`} onClick={() => setCurrenTime()}>현재 시간</button>
-                            }
-                            <button type="submit" className={`btn-fill`}>계산하기</button>
-                        </div>
-                    </form>
-                </section>
-            </div>
-        </main>
+                            <div className={styles.slotWrap}>
+                                <ul className={`${styles.toggle} ${styles[selectSlot]}`}>
+                                    <li>
+                                        <input
+                                            {...register("slot")}
+                                            type="radio"
+                                            name="slot"
+                                            id="slot-am"
+                                            value="am"
+                                            onChange={() => setSelectSlot('am')}
+                                        />
+                                        <label htmlFor="slot-am">오전</label>
+                                    </li>
+                                    <li>
+                                        <input
+                                            {...register("slot")}
+                                            type="radio"
+                                            name="slot"
+                                            id="slot-pm"
+                                            value="pm"
+                                            onChange={() => setSelectSlot('pm')}
+                                        />
+                                        <label htmlFor="slot-pm">오후</label>
+                                    </li>
+                                </ul>
+                                <div className={styles.timeSelectBox}>
+                                    <button type="button">
+                                        <span>{selectHour}시</span>
+                                    </button>
+                                    <button type="button">
+                                        <span>{selectMinute}분</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div className={styles.buttonWrap}>
+                                {
+                                    !!tabIndex &&
+                                    <button
+                                        type="button" className={`btn-line`} onClick={() => setCurrenTime()}>현재 시간</button>
+                                }
+                                <button type="submit" className={`btn-fill`}>계산하기</button>
+                            </div>
+                        </form>
+                    </section>
+                </div>
+            </main>
+        </motion.div>
+
     );
 };
 

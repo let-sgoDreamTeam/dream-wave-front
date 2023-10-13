@@ -2,17 +2,20 @@
     font-family: 'NEXON Lv1 Gothic';
     font-style: normal;
     font-weight: 300;
-    src: url("./NEXONLv1GothicLight.ttf") format("ttf");
+    src: url("./NEXONLv1GothicLight.ttf") format("truetype"), /* TTF 형식 */
+    url("./NEXONLv1GothicLight.woff") format("woff"); /* WOFF 형식 */
 }
 @font-face {
     font-family: 'NEXON Lv1 Gothic';
     font-style: normal;
     font-weight: 400;
-    src: url("./NEXONLv1GothicRegular.ttf") format("ttf");
+    src: url("./NEXONLv1GothicRegular.ttf") format("truetype"), /* TTF 형식 */
+    url("./NEXONLv1GothicRegular.woff") format("woff"); /* WOFF 형식 */
 }
 @font-face {
     font-family: 'NEXON Lv1 Gothic';
     font-style: normal;
     font-weight: 700;
-    src: url("./NEXONLv1GothicRegular.ttf") format("ttf");
+    src: url("./NEXONLv1GothicBold.ttf") format("truetype"), /* TTF 형식 */
+    url("./NEXONLv1GothicBold.woff") format("woff"); /* WOFF 형식 */
 }
