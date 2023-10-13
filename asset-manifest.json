@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/dream-wave-front/static/css/main.460fa5f9.css",
-    "main.js": "/dream-wave-front/static/js/main.01d491ef.js",
+    "main.css": "/dream-wave-front/static/css/main.4ba0ff13.css",
+    "main.js": "/dream-wave-front/static/js/main.6bad7f77.js",
     "static/js/787.8d44e155.chunk.js": "/dream-wave-front/static/js/787.8d44e155.chunk.js",
     "static/media/NEXONLv1GothicLight.ttf": "/dream-wave-front/static/media/NEXONLv1GothicLight.dec3dafab35db5f98ed7.ttf",
     "static/media/NEXONLv1GothicRegular.ttf": "/dream-wave-front/static/media/NEXONLv1GothicRegular.3367236d2b79a849d19b.ttf",
@@ -12,12 +12,12 @@
     "static/media/text_logo.png": "/dream-wave-front/static/media/text_logo.811a3eb99ac5b19aa4c3.png",
     "index.html": "/dream-wave-front/index.html",
     "static/media/select_arrow.svg": "/dream-wave-front/static/media/select_arrow.b54bf136cfc85b9393a1.svg",
-    "main.460fa5f9.css.map": "/dream-wave-front/static/css/main.460fa5f9.css.map",
-    "main.01d491ef.js.map": "/dream-wave-front/static/js/main.01d491ef.js.map",
+    "main.4ba0ff13.css.map": "/dream-wave-front/static/css/main.4ba0ff13.css.map",
+    "main.6bad7f77.js.map": "/dream-wave-front/static/js/main.6bad7f77.js.map",
     "787.8d44e155.chunk.js.map": "/dream-wave-front/static/js/787.8d44e155.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.460fa5f9.css",
-    "static/js/main.01d491ef.js"
+    "static/css/main.4ba0ff13.css",
+    "static/js/main.6bad7f77.js"
   ]
 }
