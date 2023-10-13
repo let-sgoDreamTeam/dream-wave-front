@@ -1,0 +1,36 @@
+.bg-gradient {
+  min-height: 100vh;
+  background: url('./assets/images/bg_gradient.png') no-repeat;
+  background-size: cover;
+}
+
+.section-wrap {
+  padding: 50px 30px 110px;
+}
+
+.title-h1 {
+  font-size: 2rem;
+  line-height: 1.75;
+  color: #fff;
+  text-align: center;
+  font-weight: 700;
+}
+
+.btn-line {
+  font-size: 1.2rem;
+  min-width: 12.4rem;
+  height: 3.4rem;
+  border: 1px solid #fff;
+  color: #fff;
+  border-radius: 1.8rem;
+}
+
+.btn-fill {
+  font-size: 1.2rem;
+  min-width: 12.4rem;
+  padding: 0 3.9rem;
+  height: 3.4rem;
+  color: #000;
+  border-radius: 1.8rem;
+  background: linear-gradient(to bottom right, #A3E4BC, #D4FFF6);
+}

@@ -1,0 +1,18 @@
+@font-face {
+    font-family: 'NEXON Lv1 Gothic';
+    font-style: normal;
+    font-weight: 300;
+    src: url("./NEXONLv1GothicLight.ttf") format("ttf");
+}
+@font-face {
+    font-family: 'NEXON Lv1 Gothic';
+    font-style: normal;
+    font-weight: 400;
+    src: url("./NEXONLv1GothicRegular.ttf") format("ttf");
+}
+@font-face {
+    font-family: 'NEXON Lv1 Gothic';
+    font-style: normal;
+    font-weight: 700;
+    src: url("./NEXONLv1GothicRegular.ttf") format("ttf");
+}
