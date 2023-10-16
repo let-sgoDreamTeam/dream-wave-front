@@ -14,6 +14,10 @@ const Landing = () => {
 
     useEffect(() => {
         setScreenSize();
+
+        return () => {
+            window.removeEventListener('resize', setScreenSize);
+        };
     }, []);
 
     window.addEventListener('resize', () => setScreenSize());

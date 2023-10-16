@@ -1,9 +1,8 @@
-.calcSection {
-  .title {
-    margin-bottom: 20px;
-}
+// 계산기
+.calcInputSection {
 
-.calcBox {
+  .calcBox {
+    margin-top: 2rem;
     background: rgba(0, 0, 0, 0.4);
     border-radius: 1.5rem;
     padding: 2.1rem 2rem 3rem;
@@ -130,6 +129,22 @@
        border-left: 1px solid rgba(255, 255, 255, 0.2);
      }
     }
+
+    select {
+      background: transparent;
+      -webkit-appearance: none;
+      color: #fff;
+      border: none;
+      flex: 1;
+      font-size: 1.2rem;
+      padding-left: 1.8rem;
+      background: url("../../assets/icons/select_arrow.svg") right 1.2rem center/0.7rem 0.5rem no-repeat;
+
+      & + select {
+        border-left: 1px solid rgba(255, 255, 255, 0.2);
+        padding-left: 1.4rem;
+      }
+    }
   }
 
   .buttonWrap {
@@ -141,5 +156,80 @@
         margin-left: 1rem;
       }
     }
+  }
+}
+
+
+// 결과
+.calcResultSection {
+  margin-top: 5rem;
+}
+
+.resultList {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+
+  li {
+    width: calc(50% - 0.5rem);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 1.5rem;
+
+    &:nth-child(2n) {
+      margin-left: 1rem;
+    }
+
+    &:nth-child(n + 3) {
+      margin-top: 1rem;
+    }
+  }
+
+  .inner {
+    padding: 2rem;
+  }
+
+  .label {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  time {
+    margin-top: 0.5rem;
+    display: block;
+    font-size: 2rem;
+    color: #FFF8B5;
+    font-weight: 700;
+  }
+
+  .textWrap {
+    margin-top: 2.3rem;
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.7);
+
+    p + p {
+      margin-top: 0.5rem;
+    }
+  }
+}
+
+.notice {
+  word-break: keep-all;
+  position: relative;
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.7;
+  padding-left: 1.9rem;
+
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0.3rem;
+    width: 1.3rem;
+    height: 1.3rem;
+    background: url("../../assets/icons/icon_notice.svg");
   }
 }
