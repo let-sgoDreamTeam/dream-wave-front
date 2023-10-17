@@ -6,6 +6,7 @@ import './common.scss';
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
+import { AnimatePresence } from 'framer-motion';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -13,7 +14,9 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <App />
+      <AnimatePresence>
+          <App />
+      </AnimatePresence>
   </React.StrictMode>
 );
 

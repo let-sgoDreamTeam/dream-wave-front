@@ -1,0 +1,235 @@
+// 계산기
+.calcInputSection {
+
+  .calcBox {
+    margin-top: 2rem;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 1.5rem;
+    padding: 2.1rem 2rem 3rem;
+  }
+
+  .tabWrap {
+    display: flex;
+
+    button {
+      flex: 1;
+      padding: 0.9rem 0;
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.5);
+      text-align: center;
+      border-bottom: 0.2rem solid rgba(255, 255, 255, 0.5);
+
+      &.active {
+        color: #A3E4BC;
+        border-bottom: 0.2rem solid #A3E4BC;
+      }
+    }
+  }
+
+  .slotWrap {
+    margin: 2rem 0 3rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .toggle {
+    position: relative;
+    width: 11rem;
+    height: 3.5rem;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 1.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0.6rem;
+
+    &:before {
+      position: absolute;
+      content: '';
+      display: block;
+      width: 5.2rem;
+      height: 2.9rem;
+      border-radius: 1.8rem;
+      background: #fff;
+      transition: 0.5s;
+      left: 0.3rem;
+    }
+
+    &.am:before {
+      left: 0.3rem;
+    }
+
+    &.pm:before {
+      left: 5.5rem;
+    }
+
+    li {
+      flex: 1;
+      height: 100%;
+
+      &:nth-child(1) {
+        padding-left: 0.3rem;
+      }
+      &:nth-child(2) {
+        padding-right: 0.3rem;
+      }
+    }
+
+    input {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      clip-path: polygon(0 0, 0 0, 0 0);
+    }
+
+    label {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.2rem;
+      color: #fff;
+      mix-blend-mode: difference;
+      height: 100%;
+    }
+  }
+
+  .timeSelectBox {
+    display: flex;
+    width: 14.5rem;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 1.8rem;
+
+    button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex: 1;
+      height: 3.5rem;
+      color: #fff;
+      font-size: 1.2rem;
+
+      &:nth-child(1) span {
+        padding-left: 0.8rem;
+      }
+
+      &:after {
+        content:'';
+        display: block;
+        margin-left: 0.7rem;
+        width: 7px;
+        height: 5px;
+        background: url("../../assets/icons/select_arrow.svg") center/100% no-repeat;
+      }
+
+     & + button {
+       border-left: 1px solid rgba(255, 255, 255, 0.2);
+     }
+    }
+
+    select {
+      background: transparent;
+      -webkit-appearance: none;
+      color: #fff;
+      border: none;
+      flex: 1;
+      font-size: 1.2rem;
+      padding-left: 1.8rem;
+      background: url("../../assets/icons/select_arrow.svg") right 1.2rem center/0.7rem 0.5rem no-repeat;
+
+      & + select {
+        border-left: 1px solid rgba(255, 255, 255, 0.2);
+        padding-left: 1.4rem;
+      }
+    }
+  }
+
+  .buttonWrap {
+    display: flex;
+    justify-content: center;
+
+    button {
+      & + button {
+        margin-left: 1rem;
+      }
+    }
+  }
+}
+
+
+// 결과
+.calcResultSection {
+  margin-top: 5rem;
+}
+
+.resultList {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+
+  li {
+    width: calc(50% - 0.5rem);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 1.5rem;
+
+    &:nth-child(2n) {
+      margin-left: 1rem;
+    }
+
+    &:nth-child(n + 3) {
+      margin-top: 1rem;
+    }
+  }
+
+  .inner {
+    padding: 2rem;
+  }
+
+  .label {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  time {
+    margin-top: 0.5rem;
+    display: block;
+    font-size: 2rem;
+    color: #FFF8B5;
+    font-weight: 700;
+  }
+
+  .textWrap {
+    margin-top: 2.3rem;
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.7);
+
+    p + p {
+      margin-top: 0.5rem;
+    }
+  }
+}
+
+.notice {
+  word-break: keep-all;
+  position: relative;
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.7;
+  padding-left: 1.9rem;
+
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0.3rem;
+    width: 1.3rem;
+    height: 1.3rem;
+    background: url("../../assets/icons/icon_notice.svg");
+  }
+}
