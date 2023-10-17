@@ -51,7 +51,7 @@ const CalcInput = ({setResult, tabIndex, setTabIndex}: any) => {
 
         const ONE_CYCLE_MINUTE = 90;
         const MINUTE = 60;
-        const cycles = [3, 4, 5, 6];
+        const cycles = [6, 5, 4, 3];
 
         if (slot === 'pm') {
             hour += 12;
@@ -63,8 +63,13 @@ const CalcInput = ({setResult, tabIndex, setTabIndex}: any) => {
                 const hourValue = Math.floor( totalMinutes / MINUTE );
                 const minuteValue = formattedMinute( totalMinutes % MINUTE );
 
-                if ( hourValue > 24 || hourValue < 12 ) {
-                    return `오전 ${formattedHour(hourValue - 24)}:${minuteValue}`
+                console.log(hourValue);
+
+                if (hourValue > 24) {
+                    return `오전 ${formattedHour(hourValue - 24)}:${minuteValue}`;
+                }
+                else if (hourValue < 24 && hourValue > 12) {
+                    return `오후 ${formattedHour(hourValue - 12)}:${minuteValue}`;
                 }
                 else if (hourValue === 24) {
                     return `오전 ${hourValue - 12}:${minuteValue}`;
@@ -73,7 +78,7 @@ const CalcInput = ({setResult, tabIndex, setTabIndex}: any) => {
                     return `오후 ${hourValue}:${minuteValue}`;
                 }
                 else {
-                    return `오후 ${formattedHour(hourValue - 12)}:${minuteValue}`;
+                    return `오전 ${formattedHour(hourValue)}:${minuteValue}`;
                 }
             })
         }
@@ -124,6 +129,8 @@ const CalcInput = ({setResult, tabIndex, setTabIndex}: any) => {
 
 
     const onSubmit: SubmitHandler<Inputs> = ({slot, hour, minute}:any) => {
+
+        console.log(slot, hour, minute);
 
         calculateSleepCycle(slot, Number(hour), Number(minute));
     };
