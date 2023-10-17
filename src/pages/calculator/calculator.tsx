@@ -8,6 +8,8 @@ import CalcResult from "./calc-result";
 
 
 const Calculator = () => {
+    const [tabIndex, setTabIndex] = useState(0);
+    const [result, setResult] = useState({});
 
     return (
         <motion.div
@@ -17,8 +19,11 @@ const Calculator = () => {
         >
             <main className={`bg-gradient`}>
                 <div className={'section-wrap'}>
-                    <CalcInput />
-                    <CalcResult />
+                    <CalcInput setResult={setResult} tabIndex={tabIndex} setTabIndex={setTabIndex}/>
+                    {
+                        !!Object.keys(result).length && <CalcResult result={result}/>
+                    }
+
                 </div>
             </main>
         </motion.div>

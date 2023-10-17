@@ -13,8 +13,7 @@ const tabButton = [
     '이 시간에 잘래요'
 ]
 
-const CalcInput = () => {
-    const [tabIndex, setTabIndex] = useState(0);
+const CalcInput = ({setResult, tabIndex, setTabIndex}: any) => {
     const [selectSlot, setSelectSlot] = useState('pm');
 
     const today = new Date();
@@ -58,95 +57,69 @@ const CalcInput = () => {
             hour += 12;
         }
 
-        const result = cycles.map((cycle) => {
-            const totalMinutes = ( hour * MINUTE ) + minute + ( ONE_CYCLE_MINUTE * cycle );
-            const hourValue = Math.floor( totalMinutes / MINUTE );
-            const minuteValue = formattedMinute( totalMinutes % MINUTE );
+        const basedOnSleepTime = () => {
+            return cycles.map((cycle) => {
+                const totalMinutes = ( hour * MINUTE ) + minute + ( ONE_CYCLE_MINUTE * cycle );
+                const hourValue = Math.floor( totalMinutes / MINUTE );
+                const minuteValue = formattedMinute( totalMinutes % MINUTE );
 
-            if ( hourValue > 24 || hourValue < 12 ) {
-                return `오전 ${formattedHour(hourValue - 24)}:${minuteValue}`
-            }
-            else if (hourValue === 24) {
-                return `오전 ${hourValue - 24}:${minuteValue}`;
-            }
-            else if (hourValue === 12) {
-                return `오후 ${hourValue}:${minuteValue}`;
-            }
-            else {
-                return `오후 ${formattedHour(hourValue - 12)}:${minuteValue}`;
-            }
-        });
+                if ( hourValue > 24 || hourValue < 12 ) {
+                    return `오전 ${formattedHour(hourValue - 24)}:${minuteValue}`
+                }
+                else if (hourValue === 24) {
+                    return `오전 ${hourValue - 12}:${minuteValue}`;
+                }
+                else if (hourValue === 12) {
+                    return `오후 ${hourValue}:${minuteValue}`;
+                }
+                else {
+                    return `오후 ${formattedHour(hourValue - 12)}:${minuteValue}`;
+                }
+            })
+        }
 
-        console.log(result);
+        const basedOnWakeUpTime = () => {
+            return cycles.map((cycle) => {
+                let totalMinutes = (hour * MINUTE) + minute - (ONE_CYCLE_MINUTE * cycle);
+
+                // 음수인 경우 전날로 넘어감
+                if (totalMinutes < 0) {
+                    totalMinutes += 24 * 60;
+                }
+
+                const hourValue = Math.floor(totalMinutes / MINUTE);
+                const minuteValue = formattedMinute( totalMinutes % MINUTE );
+
+                if (hourValue > 12) {
+                    return `오후 ${formattedHour(hourValue - 12)}:${minuteValue}`
+                }
+                else if (hourValue === 12) {
+                    return `오후 ${hourValue}:${minuteValue}`
+                }
+                else if (hourValue === 0) {
+                    return `오전 ${hourValue + 12}:${minuteValue}`
+                }
+                else {
+                    return `오전 ${formattedHour(hourValue)}:${minuteValue}`
+                }
+            });
+        }
+
+
+        setResult(
+            (tabIndex === 1) ?
+                {
+                    title: '이 시간에 일어나면 좋아요',
+                    value: basedOnSleepTime(),
+                }
+            :
+                {
+                    title: '이 시간에 잠들면 좋아요',
+                    value:  basedOnWakeUpTime(),
+                }
+        )
+
     }
-
-    //12가 넘으면 오후 -12
-    //24가 넘으면 오전 -24
-
-    // 0 ~ 24
-    // 1 ~ 12
-    //
-    //
-    // 1, 13
-    // 2, 14
-    //
-    // // 4시간 뒤
-    // 오후 => 오전
-    // 22시 => 2시
-    // 22 + 4 = 26
-    // 26 - 24 = 2
-    //
-    // 오전 => 오후 =
-    // 10시 => 2시
-    // 10 + 4 = 14
-    // 14 - 24 = -10
-    //
-    // 오전 => 오전
-    // 4시 => 8시
-    // 4 + 4 = 8
-    // 8 - 24 = -12
-    //
-    // 오후 => 오후
-    // 16시 => 20시
-    // 16 + 4 = 20
-    // 20 - 24 = -8
-
-
-    // const calculateSleepCycle = (slot: string, hour: number, minute: number) => {
-    //     const ONE_CYCLE_MINUTE = 90;
-    //     const MINUTE = 60;
-    //     const cycles = [3]; // 3 사이클을 계산
-    //
-    //     if (slot === 'pm') {
-    //         // 오후인 경우
-    //         hour += 12;
-    //     } else if (slot === 'am' && hour === 12) {
-    //         hour = 0;
-    //     }
-    //
-    //     const cycleMinutes: string[] = cycles.map((cycle) => {
-    //         let totalMinutes = (hour * MINUTE) + minute + ONE_CYCLE_MINUTE * cycle;
-    //
-    //         // 올바른 AM 또는 PM 값 계산
-    //         const newSlot = totalMinutes >= (12 * MINUTE) ? '오후' : '오전';
-    //
-    //         if (newSlot === '오후') {
-    //             // PM 시간 계산
-    //             totalMinutes -= 12 * MINUTE;
-    //         }
-    //
-    //         const hourValue = Math.floor(totalMinutes / MINUTE);
-    //         const minuteValue = totalMinutes % MINUTE;
-    //
-    //         const formattedHour = hourValue < 10 ? `0${hourValue}` : `${hourValue}`;
-    //         const formattedMinute = minuteValue < 10 ? `0${minuteValue}` : `${minuteValue}`;
-    //
-    //         return `${newSlot} ${formattedHour}시 ${formattedMinute}분`;
-    //     });
-    //
-    //     console.log(cycleMinutes);
-    // };
-
 
 
 
