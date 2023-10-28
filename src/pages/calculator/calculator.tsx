@@ -11,6 +11,8 @@ const Calculator = () => {
     const [tabIndex, setTabIndex] = useState(0);
     const [result, setResult] = useState({});
 
+    console.log(result);
+
     return (
         <motion.div
             initial={{opacity: 0}}

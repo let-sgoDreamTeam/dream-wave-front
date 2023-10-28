@@ -130,7 +130,7 @@ const CalcInput = ({setResult, tabIndex, setTabIndex}: any) => {
 
     const onSubmit: SubmitHandler<Inputs> = ({slot, hour, minute}:any) => {
 
-        console.log(slot, hour, minute);
+        // console.log(slot, hour, minute);
 
         calculateSleepCycle(slot, Number(hour), Number(minute));
     };
