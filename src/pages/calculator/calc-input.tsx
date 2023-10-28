@@ -14,7 +14,7 @@ const tabButton = [
 ]
 
 const CalcInput = ({setResult, tabIndex, setTabIndex}: any) => {
-    const [selectSlot, setSelectSlot] = useState('pm');
+    const [selectSlot, setSelectSlot] = useState('am');
 
     const today = new Date();
     const hours = today.getHours();
@@ -24,25 +24,23 @@ const CalcInput = ({setResult, tabIndex, setTabIndex}: any) => {
         register,
         handleSubmit,
         setValue,
-        watch,
         formState: { errors },
     } = useForm<Inputs>({
         defaultValues: {
-            slot: 'pm',
-            hour: '10',
+            slot: 'am',
+            hour: '09',
             minute: '00',
         }
     });
 
-    const formattedHour = (hour: number) =>  hour < 10 ? `0${hour}` : `${hour}`;
-    const formattedMinute = (minute: number) => minute < 10 ? `0${minute}` : `${minute}`;
-    function convertTo12HourFormat(hour: number) {
+    const formattedTime = (time: number): string => time < 10 ? `0${time}` : `${time}`;
+    const convertTo12HourFormat = (hour:number): number => {
         if (hour === 0) {
             return 12;
         } else if (hour <= 12) {
             return hour;
         } else {
-            return hour - 12;
+            return (hour - 12);
         }
     }
 
@@ -53,33 +51,37 @@ const CalcInput = ({setResult, tabIndex, setTabIndex}: any) => {
         const MINUTE = 60;
         const cycles = [6, 5, 4, 3];
 
-        if (slot === 'pm') {
+        if (slot === 'pm' && hour !== 12) {
             hour += 12;
+        }
+
+        if (slot === 'am') {
+            if (hour === 12) {
+                hour = 0;
+            }
+        }
+
+        const setKoreanAmPm = (hour: number) => {
+            if (hour >= 12) {
+                return '오후'
+            } else {
+                return '오전'
+            }
         }
 
         const basedOnSleepTime = () => {
             return cycles.map((cycle) => {
-                const totalMinutes = ( hour * MINUTE ) + minute + ( ONE_CYCLE_MINUTE * cycle );
+                let totalMinutes = ( hour * MINUTE ) + minute + ( ONE_CYCLE_MINUTE * cycle );
+
+                // 24시간 이상일 경우 0시로 초기화
+                if (totalMinutes >= 1440) {
+                    totalMinutes -= 24 * 60;
+                }
+
                 const hourValue = Math.floor( totalMinutes / MINUTE );
-                const minuteValue = formattedMinute( totalMinutes % MINUTE );
+                const minuteValue = totalMinutes % MINUTE;
 
-                console.log(hourValue);
-
-                if (hourValue > 24) {
-                    return `오전 ${formattedHour(hourValue - 24)}:${minuteValue}`;
-                }
-                else if (hourValue < 24 && hourValue > 12) {
-                    return `오후 ${formattedHour(hourValue - 12)}:${minuteValue}`;
-                }
-                else if (hourValue === 24) {
-                    return `오전 ${hourValue - 12}:${minuteValue}`;
-                }
-                else if (hourValue === 12) {
-                    return `오후 ${hourValue}:${minuteValue}`;
-                }
-                else {
-                    return `오전 ${formattedHour(hourValue)}:${minuteValue}`;
-                }
+                return `${setKoreanAmPm(hourValue)} ${formattedTime(convertTo12HourFormat(hourValue))}:${formattedTime(minuteValue)}`
             })
         }
 
@@ -93,20 +95,10 @@ const CalcInput = ({setResult, tabIndex, setTabIndex}: any) => {
                 }
 
                 const hourValue = Math.floor(totalMinutes / MINUTE);
-                const minuteValue = formattedMinute( totalMinutes % MINUTE );
+                const minuteValue = totalMinutes % MINUTE;
 
-                if (hourValue > 12) {
-                    return `오후 ${formattedHour(hourValue - 12)}:${minuteValue}`
-                }
-                else if (hourValue === 12) {
-                    return `오후 ${hourValue}:${minuteValue}`
-                }
-                else if (hourValue === 0) {
-                    return `오전 ${hourValue + 12}:${minuteValue}`
-                }
-                else {
-                    return `오전 ${formattedHour(hourValue)}:${minuteValue}`
-                }
+                return `${setKoreanAmPm(hourValue)} ${formattedTime(convertTo12HourFormat(hourValue))}:${formattedTime(minuteValue)}`
+
             });
         }
 
@@ -129,9 +121,6 @@ const CalcInput = ({setResult, tabIndex, setTabIndex}: any) => {
 
 
     const onSubmit: SubmitHandler<Inputs> = ({slot, hour, minute}:any) => {
-
-        // console.log(slot, hour, minute);
-
         calculateSleepCycle(slot, Number(hour), Number(minute));
     };
 
@@ -140,8 +129,8 @@ const CalcInput = ({setResult, tabIndex, setTabIndex}: any) => {
         let currentAmPm = null;
         ( hours < 12 ) ? currentAmPm = 'am' : currentAmPm = 'pm';
         setValue("slot", currentAmPm);
-        setValue("hour", `${formattedHour(convertTo12HourFormat(hours))}`);
-        setValue("minute", `${formattedMinute(Math.ceil(minutes / 5) * 5)}`);
+        setValue("hour", `${convertTo12HourFormat(hours)}`);
+        setValue("minute", `${formattedTime(Math.ceil(minutes / 5) * 5)}`);
 
         setSelectSlot(currentAmPm);
     }
@@ -173,7 +162,10 @@ const CalcInput = ({setResult, tabIndex, setTabIndex}: any) => {
                                 name="slot"
                                 id="slot-am"
                                 value="am"
-                                onChange={() => setSelectSlot('am')}
+                                onChange={() => {
+                                    setValue("slot", 'am');
+                                    setSelectSlot('am');
+                                }}
                             />
                             <label htmlFor="slot-am">오전</label>
                         </li>
@@ -184,7 +176,12 @@ const CalcInput = ({setResult, tabIndex, setTabIndex}: any) => {
                                 name="slot"
                                 id="slot-pm"
                                 value="pm"
-                                onChange={() => setSelectSlot('pm')}
+                                onChange={() =>
+                                    {
+                                        setValue("slot", 'pm');
+                                        setSelectSlot('pm');
+                                    }
+                                }
                             />
                             <label htmlFor="slot-pm">오후</label>
                         </li>

@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from 'react';
-import styles from './calculator.module.scss'
-import { useForm, SubmitHandler } from "react-hook-form"
+import React, {useState} from 'react';
+// import styles from './calculator.module.scss'
+// import { useForm, SubmitHandler } from "react-hook-form"
 import { motion } from "framer-motion";
 import CalcInput from "./calc-input";
 import CalcResult from "./calc-result";
@@ -11,7 +11,7 @@ const Calculator = () => {
     const [tabIndex, setTabIndex] = useState(0);
     const [result, setResult] = useState({});
 
-    console.log(result);
+    // console.log(result);
 
     return (
         <motion.div
