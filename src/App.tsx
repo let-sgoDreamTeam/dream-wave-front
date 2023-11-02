@@ -5,6 +5,8 @@ import {
 } from "react-router-dom";
 import Landing from "./pages/landing/landing";
 import Calculator from "./pages/calculator/calculator";
+import Music from "./pages/music/music";
+import IndexPage from "./pages/index-page";
 // import logo from './logo.svg';
 
 const router = createBrowserRouter([
@@ -13,9 +15,20 @@ const router = createBrowserRouter([
         element: <Landing />,
     },
     {
-        path: "/calculator",
-        element: <Calculator />
-    }
+        path: "/page",
+        element: <IndexPage />,
+        children: [
+            {
+                path: "calculator",
+                element: <Calculator />
+            },
+            {
+                path: "music",
+                element: <Music />
+            }
+        ]
+    },
+
 ], {
     basename: process.env.PUBLIC_URL
 });

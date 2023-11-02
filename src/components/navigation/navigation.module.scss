@@ -1,0 +1,33 @@
+
+.navBox {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 6rem;
+  background: #2C2C2C;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 3rem 3rem 0 0;
+  padding: 0 1.2rem;
+
+
+}
+
+a {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+a > span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: polygon(0 0, 0 0, 0 0);
+}

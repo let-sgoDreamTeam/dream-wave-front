@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from "./calculator.module.scss";
+import styles from "../calculator.module.scss";
 import { motion } from "framer-motion";
 
 const dummy = [

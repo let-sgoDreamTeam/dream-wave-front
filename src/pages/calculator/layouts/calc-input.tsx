@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import styles from "./calculator.module.scss";
+import styles from "../calculator.module.scss";
 import {SubmitHandler, useForm} from "react-hook-form";
 
 type Inputs = {

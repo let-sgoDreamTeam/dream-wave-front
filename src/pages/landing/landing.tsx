@@ -28,7 +28,7 @@ const Landing = () => {
             animate={{opacity: 1}}
             exit={{opacity: 0}}
         >
-            <section className={styles.landingWrap} onClick={() => navigate('/calculator')}>
+            <section className={styles.landingWrap} onClick={() => navigate('/page/calculator')}>
                 <div className={styles.halfBg} aria-hidden={true}>
                     <div className={styles.symbolArea}>
                         <div className={styles.symbol}>
